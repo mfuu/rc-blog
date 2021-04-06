@@ -1,0 +1,57 @@
+.article{
+  max-width: 1125px;
+  margin: 0 auto;
+  .index-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px #32325d1a, 0 5px 15px #00000012;
+    position: relative;
+    margin: .5rem 0 1rem 0;
+    .card-content {
+      padding: 20px 40px;
+    }
+    .inner {
+      margin-top: 20px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+  }
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px 0;
+    .card {
+      display: inline-block;
+      margin: 0 0 15px 0;
+      box-shadow: 0 15px 35px #32325d1a, 0 5px 15px #00000012;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      transition-delay: .1s;
+      -webkit-object-fit: cover;
+      object-fit: cover;
+      transition: .5s all linear;
+      -ms-transition: .5s all linear; /* IE 9 */
+      -moz-transition: .5s all linear; /* Firefox */
+      -webkit-transition: .5s all linear; /* Safari 和 Chrome */
+      -o-transition: .5s all linear; /* Opera */
+      &:hover {
+        transform: scale3d(1.05, 1.05, 1.05);
+        -ms-transform: scale3d(1.05, 1.05, 1.05);
+        -moz-transform: scale3d(1.05, 1.05, 1.05);
+        -webkit-transform: scale3d(1.05, 1.05, 1.05);
+        -o-transform: scale3d(1.05, 1.05, 1.05);
+      }
+      .more {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        cursor: pointer;
+        &:hover {
+          color: deepskyblue;
+        }
+      }
+    }
+  }
+}
