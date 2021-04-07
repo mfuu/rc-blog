@@ -56,8 +56,8 @@ function CommonComment() {
     setLikes(0)
     setDislikes(1)
   }
-  const handleChange = () => {
-    setValue(document.getElementsByClassName('textarea')[0].value)
+  const handleChange = e => {
+    setValue(e.target.value)
   }
   const handleSubmit = () => {
     if (!value) return
