@@ -96,7 +96,7 @@ function CommonComment() {
                 <div className="icon">
                   <span className="text" onClick={() => setShowEmoji(!showEmoji)}>表情</span> | <span className="text">预览</span>
                 </div>
-                <div className="emoji" style={{ display: showEmoji ? 'block' : 'none' }}>
+                <div className="emoji" style={{ maxHeight: showEmoji ? '500px' : '0' }}>
                   {utils.emoji.map(item => {
                     return <i className="emojis" key={item} onClick={() => setValue(value + item)}>{item}</i>
                   })}
