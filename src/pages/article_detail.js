@@ -1,4 +1,6 @@
 import '../assets/css/article_detail.less'
+import Comment from '../components/common_comment'
+import ReactMarkdown from 'react-markdown'
 import { get_detail_article } from '../services/api/article'
 import { useEffect, useState } from "react"
 
@@ -7,7 +9,6 @@ function DetailArticle() {
 
   useEffect(() => {
     get_detail_article().then(res => {
-      console.log(res)
       setData(res.data)
       document.title = res.data.title
     })
@@ -29,7 +30,7 @@ function DetailArticle() {
               {data.title}
             </div>
             <div className="inner">
-              {data.content}
+              <ReactMarkdown children={data.content} />
             </div>
           </div>
         </div>
@@ -37,7 +38,12 @@ function DetailArticle() {
           
         </div>
       </div>
-      
+      <div className="comment">
+        <div className="comment-wrap">
+          <Comment />
+        </div>
+        <div className="character"></div>
+      </div>
     </div>
   )
 }
