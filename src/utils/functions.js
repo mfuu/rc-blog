@@ -1,3 +1,6 @@
+const fs = require('fs')
+const path = require('path')
+
 let timer, flag // 防抖节流用
 
 module.exports = {
@@ -48,5 +51,23 @@ module.exports = {
         }, delay)
       }
     }
+  },
+  /**
+   * 读取文件内容
+   * @param {String} path 文件路径
+   * @returns 内容
+   */
+  getFile(path) {
+    let xhr
+    if (window.XMLHttpRequest) {
+      xhr = new XMLHttpRequest()
+    } else {
+      xhr = new ActiveXObject('Microsoft.XMLHttp')
+    }
+    let status = document.location.protocol === 'file' ? 0 : 200
+    xhr.open('GET', path, false)
+    xhr.overrideMimeType("text/html;charset=utf-8")
+    xhr.send(null)
+    return xhr.status === status ? xhr.responseText : null
   }
 }

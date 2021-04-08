@@ -1,4 +1,5 @@
 import '../assets/css/article.less'
+import utils from '../utils'
 import { get_article_list } from '../services/api/article'
 import { useHistory } from 'umi'
 import { Card, Icon } from 'antd'
@@ -14,6 +15,23 @@ function article() {
       setCardList(res.list)
     })
   }, [])
+
+  useEffect(() => {
+    getFiles()
+  }, [])
+
+  const getFiles = () => {
+    let filenames = require.context('../assets/files', false, /.md$/).keys()
+    let files = []
+    filenames.forEach(name => {
+      name = name.replace('./', '')
+      files.push({
+        name: name.split('.')[0],
+        content: utils.getFile('../assets/files/' + name)
+      })
+    })
+    console.log(files)
+  }
 
   const goDetail = (item) => {
     history.push(`/detail/${item.id}`)

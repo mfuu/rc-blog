@@ -1,10 +1,9 @@
 import emoji from './emoji'
-import { debounce, throttle } from './functions'
-import { formatDate } from './filters'
+import func from './functions'
+import filter from './filters'
 
 export default {
   emoji,
-  debounce,
-  throttle,
-  formatDate
+  ...filter,
+  ...func
 }

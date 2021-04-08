@@ -13,5 +13,8 @@ export default defineConfig({
   fastRefresh: {},
   history: {
     type: 'hash'
-  }
+  },
+  // hash: true,
+  // base: './',
+  // publicPath: './'
 })
