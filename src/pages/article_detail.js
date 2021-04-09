@@ -1,6 +1,7 @@
 import '../assets/css/article_detail.less'
 import Comment from '../components/common_comment'
 import ReactMarkdown from 'react-markdown'
+import MarkdownNav from 'markdown-navbar'
 import { get_detail_article } from '../services/api/article'
 import { useEffect, useState } from "react"
 
@@ -35,7 +36,10 @@ function DetailArticle() {
           </div>
         </div>
         <div className="catalog">
-          
+          <MarkdownNav
+            className="article-menu"
+            source={data.content}
+          />
         </div>
       </div>
       <div className="comment">

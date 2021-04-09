@@ -77,6 +77,44 @@ body,
 *:after {
   box-sizing: border-box;
 }
+.vinput {
+  border-bottom: 1px dashed #dedede;
+}
+.vinput:focus {
+  border-bottom-color: #eb5055;
+}
+input {
+  color: rgba(0, 0, 0, 0.65);
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  border-radius: 0;
+  outline: none;
+  height: 3rem;
+  width: 100%;
+  font-size: 16px;
+  margin: 0 0 8px 0;
+  padding: 0;
+  box-shadow: none;
+  box-sizing: content-box;
+  transition: border .3s, -webkit-box-shadow .3s;
+  transition: box-shadow .3s, border .3s;
+  transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
+}
+input:focus {
+  border-bottom: 1px solid #26a69a;
+  box-shadow: 0 1px 0 0 #26a69a;
+}
+input::-webkit-input-placeholder {
+  color: #bfbfbf;
+}
+input::-moz-input-placeholder {
+  color: #bfbfbf;
+}
+input::-ms-input-placeholder {
+  color: #bfbfbf;
+}
 .lf {
   float: left;
 }
@@ -99,12 +137,6 @@ ul,li,ol {
 .sprite {
   display: inline-block;
   vertical-align: middle;
-}
-.container {
-  height: calc(100% - 56px);
-  width: 100%;
-  overflow: auto;
-  padding: 20px 200px;
 }
 .flex-center {
   display: flex;
@@ -136,4 +168,20 @@ ul,li,ol {
   background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
   opacity: 0.8;
   padding: 0 12px;
+}
+.container {
+  height: calc(100% - 56px);
+  width: 100%;
+  overflow: auto;
+  transition: all .5s;
+}
+@media screen and (max-width: 1366px) {
+  .container {
+    padding: 20px 50px;
+  }
+}
+@media screen and (min-width: 1366px) {
+  .container {
+    padding: 20px 200px;
+  }
 }

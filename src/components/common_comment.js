@@ -4,13 +4,46 @@ import { Comment, Input, List, Form, Button, Avatar, Icon, Popover, Tooltip } fr
 import { useState } from 'react'
 const { TextArea } = Input
 
-const CommentList = ({ comments }) => (
+const CommentList = ({ comments, like, dislike }) => (
   <List
     dataSource={comments}
     header={`${comments.length}条评论`}
     itemLayout="horizontal"
-    renderItem={props => <Comment {...props} />}
+    renderItem={(item, index) => (
+      <Comment
+        {...item}
+        actions={
+          [
+            <span>
+              <Icon
+                type="like"
+                theme={item.data.action === 'liked' ? 'filled' : 'outlined'}
+                onClick={() => like(item, index)}
+              />
+              <span style={{ paddingLeft: 8, cursor: 'auto' }}>{item.data.likes}</span>
+            </span>,
+            <span key="comment-basic-dislike">
+              <Icon
+                type="dislike"
+                theme={item.data.action === 'disliked' ? 'filled' : 'outlined'}
+                onClick={() => dislike(item, index)}
+              />
+              <span style={{ paddingLeft: 8, cursor: 'auto' }}>{item.data.dislikes}</span>
+            </span>,
+            <span key="comment-basic-reply-to">回复</span>
+          ]
+        }
+      />
+    )}
   />
+)
+
+const UserInfo = () => (
+  <div className="userinfo">
+    <input placeholder="昵称" className="vnick vinput" type="text"></input>
+    <input placeholder="邮箱" className="vemail vinput" type="email"></input>
+    <input placeholder="网址(http://)" className="vlink vinput" type="text"></input>
+  </div>
 )
 
 function CommonComment() {
@@ -18,43 +51,30 @@ function CommonComment() {
   const [value, setValue] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [showEmoji, setShowEmoji] = useState(false)
-  const [action, setAction] = useState('')
-  const [likes, setLikes] = useState(0)
-  const [dislikes, setDislikes] = useState(0)
 
-  const Actions = [
-    <span>
-      <Tooltip title="Like">
-        <Icon
-          type="like"
-          theme={action === 'liked' ? 'filled' : 'outlined'}
-          onClick={() => like()}
-        />
-      </Tooltip>
-      <span style={{ paddingLeft: 8, cursor: 'auto' }}>{likes}</span>
-    </span>,
-    <span key=' key="comment-basic-dislike"'>
-      <Tooltip title="Dislike">
-        <Icon
-          type="dislike"
-          theme={action === 'disliked' ? 'filled' : 'outlined'}
-          onClick={() => dislike()}
-        />
-      </Tooltip>
-      <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
-    </span>,
-    <span key="comment-basic-reply-to">Reply to</span>
-  ]
-
-  const like = () => {
-    setAction('liked')
-    setLikes(1)
-    setDislikes(0)
+  const like = (item, index) => {
+    let list = [...comments]
+    list.map((el, _index) => {
+      if (index === _index) {
+        if (el.data.action === 'liked') return
+        if (el.data.action !== '') el.data.dislikes--
+        el.data.likes++
+        el.data.action = 'liked'
+      }
+    })
+    setComments(list)
   }
-  const dislike = () => {
-    setAction('disliked')
-    setLikes(0)
-    setDislikes(1)
+  const dislike = (item, index) => {
+    let list = [...comments]
+    list.map((el, _index) => {
+      if (index === _index) {
+        if (el.data.action === 'disliked') return
+        if (el.data.action !== '') el.data.likes--
+        el.data.dislikes++
+        el.data.action = 'disliked'
+      }
+    })
+    setComments(list)
   }
   const handleChange = e => {
     setValue(e.target.value)
@@ -67,11 +87,12 @@ function CommonComment() {
       setValue('')
       setComments([
         {
-          actions: Actions,
           author: '游客',
           avatar: 'https://i2.hdslb.com/bfs/face/9131ad538abb79b77e60bbf4d545939c7eb81d81.jpg@72w_72h_1c.webp',
           content: <p>{value}</p>,
-          datetime: utils.formatDate(new Date().getTime())
+          datetime: utils.formatDate(new Date().getTime()),
+          data: { likes: 0, dislikes: 0, action: '' },
+          actions: []
         },
         ...comments
       ])
@@ -86,6 +107,7 @@ function CommonComment() {
           <>
             <Form.Item style={{position: 'relative'}}>
               <div className="comment-content">
+                <UserInfo />
                 <TextArea
                   rows={4}
                   value={value}
@@ -103,18 +125,25 @@ function CommonComment() {
                 </div>
               </div>
             </Form.Item>
-            <Form.Item>
+            <Form.Item style={{ textAlign: 'center' }}>
               <Button
+                className="rt"
                 htmlType="submit"
                 loading={submitting}
                 onClick={() => handleSubmit()}
-                type="primary"
               >评论</Button>
+              {comments.length === 0 && <span className="tips">快来做第一个评论的人吧~</span>}
             </Form.Item>
           </>
         }
       />
-      {comments.length > 0 && <CommentList comments={comments} />}
+      { comments && comments.length > 0 &&
+        <CommentList
+          comments={comments}
+          like={(item, index) => like(item, index)}
+          dislike={(item, index) => dislike(item, index)}
+        />
+      }
     </div>
   )
 }
