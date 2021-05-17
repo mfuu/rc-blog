@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import '../assets/css/common_oprate.less'
+import './index.less'
 
 function Oprate() {
   const [hover, setHover] = useState(false)

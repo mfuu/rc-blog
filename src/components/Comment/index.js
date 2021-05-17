@@ -1,5 +1,5 @@
-import utils from '../utils'
-import '../assets/css/common_comment.less'
+import utils from '../../utils'
+import './index.less'
 import { Comment, Input, List, Form, Button, Avatar, Icon, Popover, Tooltip } from 'antd'
 import { useState } from 'react'
 const { TextArea } = Input

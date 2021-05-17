@@ -1,5 +1,5 @@
-import Header from '../components/common_header'
-import Oprate from '../components/common_oprate'
+import Header from '../components/Header/index.js'
+import Oprate from '../components/Oprate/index.js'
 import 'highlight.js/styles/atom-one-dark.css'
 
 function BasicLayout(props) {

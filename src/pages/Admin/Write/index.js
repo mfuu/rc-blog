@@ -1,5 +1,5 @@
-import '../../assets/css/write.less'
-import { write_article } from '../../services/api/article.js'
+import './index.less'
+import { write_article } from '../../../services/api/article.js'
 import MdEditor from 'for-editor'
 import { useEffect, useRef, useState } from 'react'
 import { Button, Modal, Input, Select } from 'antd'

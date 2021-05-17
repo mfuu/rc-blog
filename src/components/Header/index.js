@@ -1,5 +1,5 @@
-import '../assets/css/common_header.less'
-import Search from './common_search'
+import './index.less'
+import Search from '../Search/index.js'
 import { Avatar } from 'antd'
 import { useEffect, useState } from 'react'
 import { useHistory } from 'umi'
