@@ -120,7 +120,7 @@ function CommonComment() {
                 </div>
                 <div className="emoji" style={{ maxHeight: showEmoji ? '500px' : '0' }}>
                   {utils.emoji.map(item => {
-                    return <i className="emojis" key={item} onClick={() => setValue(value + item)}>{item}</i>
+                    return <li className="emojis" key={item} onClick={() => setValue(value + item)}><span>{item}</span></li>
                   })}
                 </div>
               </div>

@@ -12,29 +12,12 @@ function article() {
 
   useEffect(() => {
     get_article_list().then(res => {
-      setCardList(res.list)
+      setCardList(res.data)
     })
   }, [])
-
-  useEffect(() => {
-    getFiles()
-  }, [])
-
-  const getFiles = () => {
-    let filenames = require.context('../assets/files', false, /.md$/).keys()
-    let files = []
-    filenames.forEach(name => {
-      name = name.replace('./', '')
-      files.push({
-        name: name.split('.')[0],
-        content: utils.getFile('../assets/files/' + name)
-      })
-    })
-    console.log(files)
-  }
 
   const goDetail = (item) => {
-    history.push(`/detail/${item.id}`)
+    history.push({pathname: `/detail/${item.id}`, query: {id: item.id }})
   }
 
   return(

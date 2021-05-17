@@ -11,10 +11,16 @@ export default defineConfig({
   },
   routes: routes,
   fastRefresh: {},
-  history: {
-    type: 'hash'
-  },
+  // history: {
+  //   type: 'hash'
+  // },
   // hash: true,
   // base: './',
   // publicPath: './'
+  proxy: {
+    '/api': {
+      target: 'http://localhost:3000',
+      changeOrigin: true
+    }
+  }
 })

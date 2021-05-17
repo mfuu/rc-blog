@@ -1,6 +1,3 @@
-const fs = require('fs')
-const path = require('path')
-
 let timer, flag // 防抖节流用
 
 module.exports = {
@@ -53,21 +50,20 @@ module.exports = {
     }
   },
   /**
-   * 读取文件内容
-   * @param {String} path 文件路径
-   * @returns 内容
+   * 为代码块显示添加行号
+   * @param {String} code MD的代码内容
    */
-  getFile(path) {
-    let xhr
-    if (window.XMLHttpRequest) {
-      xhr = new XMLHttpRequest()
-    } else {
-      xhr = new ActiveXObject('Microsoft.XMLHttp')
+  beforNumber(code) {
+    if (!code.trim()) {
+      return code;
     }
-    let status = document.location.protocol === 'file' ? 0 : 200
-    xhr.open('GET', path, false)
-    xhr.overrideMimeType("text/html;charset=utf-8")
-    xhr.send(null)
-    return xhr.status === status ? xhr.responseText : null
+    const list = code.split('\n');
+    const spanList = ['<span aria-hidden="true" line-row>'];
+    list.forEach(() => {
+      spanList.push('<span></span>');
+    });
+    spanList.push('</span>');
+    list.push(spanList.join(''));
+    return list.join('\n');
   }
 }

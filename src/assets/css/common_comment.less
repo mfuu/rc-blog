@@ -35,12 +35,18 @@
   .emojis {
     font-style: normal;
     font-size: 20px;
-    padding: 7px 0;
+    // padding: 7px 0;
     width: 38px;
     cursor: pointer;
     text-align: center;
     display: inline-block;
     vertical-align: middle;
+    transition: all .3s;
+    &:hover {
+      -webkit-animation: a 5s infinite ease-in-out;
+      animation: a 5s infinite ease-in-out;
+      font-size: 25px;
+    }
   }
   .tips {
     color: #999;

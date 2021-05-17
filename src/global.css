@@ -1,5 +1,5 @@
 /*全局样式*/
-html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+/* html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
 header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
 table{border-collapse:collapse;border-spacing:0;}
 caption,th{text-align:left;font-weight:normal;}
@@ -21,7 +21,7 @@ body{background:#fff;}
 a,a:hover{color:#333;}
 .ant-popover-title {
   color: #666;
-}
+} */
 
 /* common */
 html,
@@ -46,8 +46,8 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 3px;
-  height: 1px;
+  width: 5px;
+  height: 5px;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
@@ -177,11 +177,20 @@ ul,li,ol {
 }
 @media screen and (max-width: 1366px) {
   .container {
-    padding: 20px 50px;
+    padding: 20px 100px;
   }
 }
 @media screen and (min-width: 1366px) {
   .container {
     padding: 20px 200px;
   }
+}
+.fa, .fas, .far, .fal, .fad, .fab {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
 }

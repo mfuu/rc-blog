@@ -5,9 +5,34 @@
   .content {
     display: flex;
     margin-bottom: 20px;
+    img {
+      max-width: 200px;
+    }
   }
   .catalog {
     width: 345px;
+    padding-left: 20px;
+  }
+  .catalog-title {
+    margin: 35px 0 15px 0;
+    padding-left: 17px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.5rem;
+  }
+  .catalog-fixed {
+    position: fixed;
+    width: 345px;
+  }
+  .article-menu {
+    padding-left: 20px;
+  }
+  .far {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 400;
+    &::before {
+      content: "\f022";
+    }
   }
   .card {
     background: #fff;
