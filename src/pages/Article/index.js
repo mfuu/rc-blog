@@ -1,5 +1,5 @@
 import './index.less'
-import { get_article_list } from '../../services/api/article'
+import { get_article_list } from '@/services/api/article'
 import { useHistory } from 'umi'
 import { Card, Icon } from 'antd'
 import { useEffect, useState } from 'react'
