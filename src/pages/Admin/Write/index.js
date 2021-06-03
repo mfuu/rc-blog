@@ -65,8 +65,7 @@ function Write() {
   return(
     <div className="admin">
       <div className="header">
-        <span>{time}秒后自动</span>
-        <Button type="dashed" loading={loading} size="small" onClick={() => setVisible(true)}>保存</Button>
+        <Button type="dashed" loading={loading} size="small" onClick={() => setVisible(true)}>保存{time}S</Button>
       </div>
       <MdEditor
         ref={$vm}

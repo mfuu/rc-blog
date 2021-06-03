@@ -15,13 +15,14 @@ function CommonHeader() {
   ]
 
   useEffect(() => {
-    navList.forEach(item => {
-      if (history.location.pathname.indexOf(item.path) > -1) {
-        setActive(item.name)
-      } else {
-        setActive('')
-      }
-    })
+    try {
+      navList.forEach(item => {
+        if (history.location.pathname.indexOf(item.path) > -1) {
+          setActive(item.name)
+          throw new Error()
+        }
+      })
+    } catch(e) {}
   }, [])
 
   const onMouseMove = (e) => {
