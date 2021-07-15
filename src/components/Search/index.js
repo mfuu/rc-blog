@@ -9,7 +9,7 @@ function CommonSearch() {
 
   return(
     <div className="common-search">
-      <Search onSearch={ search } style={{ width: 200 }} />
+      <Search placeholder="Search" onSearch={ search } style={{ width: 200 }} />
     </div>
   )
 }
