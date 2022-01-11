@@ -1,12 +1,15 @@
 import Header from '@/components/Header/index.js'
-import Oprate from '@/components/Oprate/index.js'
-import 'highlight.js/styles/atom-one-dark.css'
+import Touch from '@/components/Touch/index.js'
+import Loading from '@/components/Loading/index.js'
+import 'highlight.js/styles/vs2015.css'
+import '../assets/css/icons.css'
 
 function BasicLayout(props) {
   return (
     <>
       <Header />
-      <Oprate />
+      <Touch />
+      <Loading />
       <div className="container">
         {props.children}
       </div>

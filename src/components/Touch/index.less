@@ -1,0 +1,61 @@
+.oprate {
+  position: fixed;
+  right: calc(44px - 100vw + 100%);
+  bottom: 62px;
+  transition: all 0.5s;
+}
+.item {
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  border-radius: 4px;
+  margin: 5px 0;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  span {
+    color: #409eff;
+    line-height: 18px;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    padding: 4px;
+  }
+}
+.back-top {
+  margin-top: 20px;
+  cursor: pointer;
+  opacity: 1;
+  transition: height 0.5s, opacity 0.5s;
+}
+.slip-in {
+  animation: mouse-in 0.5s;
+  animation-fill-mode: forwards;
+}
+.slip-out {
+  animation: mouse-out 0.5s;
+  animation-fill-mode: forwards;
+}
+.hide {
+  opacity: 0 !important;
+  height: 0 !important;
+}
+@keyframes mouse-in {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: 44px;
+  }
+}
+@keyframes mouse-out {
+  0% {
+    margin-left: 44px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}

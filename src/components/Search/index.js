@@ -1,6 +1,7 @@
+import styles from './index.less'
 import { Input } from 'antd'
 
-function CommonSearch() {
+function Search(props) {
   const { Search } = Input
 
   const search = () => {
@@ -8,10 +9,10 @@ function CommonSearch() {
   }
 
   return(
-    <div className="common-search">
+    <div className={`${props.className}`} style={ props.style }>
       <Search placeholder="Search" onSearch={ search } style={{ width: 200 }} />
     </div>
   )
 }
 
-export default CommonSearch
+export default Search

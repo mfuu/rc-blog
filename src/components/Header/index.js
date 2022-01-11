@@ -1,13 +1,13 @@
-import './index.less'
+import styles from './index.less'
 import Search from '../Search/index.js'
 import { Avatar, message, Popover } from 'antd'
 import { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'umi'
 import Login from '../Login'
 
-function CommonHeader() {
+function Header() {
 
-  let history = useHistory()
+  const history = useHistory()
   const [move, setmove] = useState(0)
   const [active, setActive] = useState('')
   const navList = [
@@ -38,39 +38,32 @@ function CommonHeader() {
   }
 
   return (
-    <div className="common-header">
-      <div className="navgator flex-center">
-        <div className="logo" onClick={() => history.push('/')}>logo</div>
-        <div className="wrap">
-          <div className="navs">
-            <div className="left-nav">
-              {navList.map((item) => {
-                return <span 
-                  className={active === item.name ? 'active' : ''}
-                  key={item.name}
-                  onClick={() => navClick(item)}
-                >{item.name}</span>
-              })}
-            </div>
-            <div className="right-nav">
-              <Search />
-            </div>
-          </div>
-          <div className="avatar">
-            <Popover
-              trigger="click"
-              placement="bottomRight"
-              getPopupContainer={
-                () => document.getElementsByClassName('common-header')[0] 
-              }
-              content={
-                <Login></Login>
-              }
-            >
-              <Avatar src={ require('@/assets/img/avator.jpg') } size={36} />
-            </Popover>
-          </div>
-        </div>
+    <div className={styles['header']}>
+      <div className={styles['logo']} onClick={() => history.push('/')}>
+        <span>logo</span>
+      </div>
+      <div className={styles['navigate']}>
+        {
+          navList.map((item) => {
+            return <span 
+              key={item.name}
+              className={`${styles['item']} ${active == item.name ? styles['active'] : ''}`}
+              onClick={() => navClick(item)}
+            >{item.name}</span>
+          })
+        }
+        <Search className="rt" />
+      </div>
+      <div className={styles['avatar']}>
+        <Popover
+          trigger="click"
+          placement="bottomRight"
+          content={
+            <Login />
+          }
+        >
+          <Avatar src={ require('@/assets/img/avator.jpg') } size={36} />
+        </Popover>
       </div>
       {/* <>
       <div className="banner">
@@ -128,4 +121,4 @@ function CommonHeader() {
   )
 }
 
-export default CommonHeader
+export default Header

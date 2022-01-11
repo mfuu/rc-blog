@@ -1,60 +1,58 @@
-.common-comment {
-  .comment-content {
-    position: relative;
-    border: 1px solid #40a9ff;
-    border-radius: 5px;
+.content {
+  position: relative;
+  border: 1px solid #40a9ff;
+  border-radius: 5px;
+  padding: 10px;
+}
+.textarea {
+  border: none;
+  box-sizing: border-box;
+  background: url("../../assets/img/comment_bg.png") 100% 100% no-repeat;
+}
+.ant-input:focus {
+  box-shadow: none;
+}
+.icon {
+  text-align: right;
+  right: 0;
+  bottom: 0;
+  .text {
     padding: 10px;
-  }
-  .textarea {
-    border: none;
-    box-sizing: border-box;
-    background: url("../../assets/img/comment_bg.png") 100% 100% no-repeat;
-  }
-  .ant-input:focus {
-    box-shadow: none;
-  }
-  .icon {
-    text-align: right;
-    right: 0;
-    bottom: 0;
-    .text {
-      padding: 10px;
-      display: inline-block;
-      vertical-align: middle;
-      cursor: pointer;
-      color: #555;
-      &:hover {
-        color: #40a9ff;
-      }
-    }
-  }
-  .emoji {
-    overflow: hidden;
-    transition: max-height 0.5s;
-  }
-  .emojis {
-    font-style: normal;
-    font-size: 20px;
-    // padding: 7px 0;
-    width: 38px;
-    cursor: pointer;
-    text-align: center;
     display: inline-block;
     vertical-align: middle;
-    transition: all .3s;
+    cursor: pointer;
+    color: #555;
     &:hover {
-      -webkit-animation: a 5s infinite ease-in-out;
-      animation: a 5s infinite ease-in-out;
-      font-size: 25px;
+      color: #40a9ff;
     }
   }
-  .tips {
-    color: #999;
-    font-size: 16px;
+}
+.emoji {
+  overflow: auto;
+  transition: max-height 0.5s;
+}
+.emojis {
+  font-style: normal;
+  font-size: 20px;
+  // padding: 7px 0;
+  width: 38px;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all .3s;
+  &:hover {
+    -webkit-animation: a 5s infinite ease-in-out;
+    animation: a 5s infinite ease-in-out;
+    font-size: 25px;
   }
-  .userinfo {
-    input {
-      width: 33.33333%;
-    }
+}
+.tips {
+  color: #999;
+  font-size: 16px;
+}
+.userinfo {
+  input {
+    width: 33.33333%;
   }
 }

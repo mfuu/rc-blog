@@ -1,7 +1,9 @@
 import utils from '@/utils'
 import './index.less'
+import styles from './index.less'
 import { Comment, Input, List, Form, Button, Avatar, Icon, Popover, Tooltip } from 'antd'
 import { useState } from 'react'
+
 const { TextArea } = Input
 
 const CommentList = ({ comments, like, dislike }) => (
@@ -14,7 +16,7 @@ const CommentList = ({ comments, like, dislike }) => (
         {...item}
         actions={
           [
-            <span>
+            <span key="comment-basic-like">
               <Icon
                 type="like"
                 theme={item.data.action === 'liked' ? 'filled' : 'outlined'}
@@ -39,14 +41,14 @@ const CommentList = ({ comments, like, dislike }) => (
 )
 
 const UserInfo = () => (
-  <div className="userinfo">
-    <input placeholder="昵称" className="vnick vinput" type="text"></input>
-    <input placeholder="邮箱" className="vemail vinput" type="email"></input>
-    <input placeholder="网址(http://)" className="vlink vinput" type="text"></input>
+  <div className={styles['userinfo']}>
+    <input placeholder="昵称" className="vnick vinput" type="text" />
+    <input placeholder="邮箱" className="vemail vinput" type="email" />
+    <input placeholder="网址(http://)" className="vlink vinput" type="text" />
   </div>
 )
 
-function CommonComment() {
+function Comments(props) {
   const [comments, setComments] = useState([])
   const [value, setValue] = useState('')
   const [submitting, setSubmitting] = useState(false)
@@ -100,27 +102,27 @@ function CommonComment() {
   }
 
   return(
-    <div className="common-comment">
+    <div className={props.className}>
       <Comment
         avatar={<Avatar src="https://i2.hdslb.com/bfs/face/9131ad538abb79b77e60bbf4d545939c7eb81d81.jpg@72w_72h_1c.webp" />}
         content={
           <>
             <Form.Item style={{position: 'relative'}}>
-              <div className="comment-content">
+              <div className={styles['content']}>
                 <UserInfo />
                 <TextArea
                   rows={4}
                   value={value}
                   onChange={handleChange}
-                  className="textarea"
+                  className={styles['textarea']}
                   placeholder="just go go"
                 />
-                <div className="icon">
-                  <span className="text" onClick={() => setShowEmoji(!showEmoji)}>表情</span> | <span className="text">预览</span>
+                <div className={styles['icon']}>
+                  <span className={styles['text']} onClick={() => setShowEmoji(!showEmoji)}>表情</span> | <span className={styles['text']}>预览</span>
                 </div>
-                <div className="emoji" style={{ maxHeight: showEmoji ? '500px' : '0' }}>
+                <div className={styles['emoji']} style={{ maxHeight: showEmoji ? '125px' : '0' }}>
                   {utils.emoji.map(item => {
-                    return <li className="emojis" key={item} onClick={() => setValue(value + item)}><span>{item}</span></li>
+                    return <li className={styles['emojis']} key={item} onClick={() => setValue(value + item)}><span>{item}</span></li>
                   })}
                 </div>
               </div>
@@ -137,7 +139,8 @@ function CommonComment() {
           </>
         }
       />
-      { comments && comments.length > 0 &&
+      { 
+        comments && comments.length > 0 &&
         <CommentList
           comments={comments}
           like={(item, index) => like(item, index)}
@@ -148,4 +151,4 @@ function CommonComment() {
   )
 }
 
-export default CommonComment
+export default Comments

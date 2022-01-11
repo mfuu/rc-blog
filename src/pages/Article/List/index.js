@@ -4,9 +4,10 @@ import { useHistory } from 'umi'
 import { Card, Icon } from 'antd'
 import { useEffect, useState } from 'react'
 
-function article() {
-  let history = useHistory()
-  const { Meta } = Card
+const { Meta } = Card
+
+function Article() {
+  const history = useHistory()
   const [cardList, setCardList] = useState([])
 
   useEffect(() => {
@@ -16,7 +17,7 @@ function article() {
   }, [])
 
   const goDetail = (item) => {
-    history.push({pathname: `/detail/${item.id}`, query: {id: item.id }})
+    history.push({pathname: `/detail`, query: {id: item.id }})
   }
 
   return(
@@ -46,7 +47,7 @@ function article() {
               <Meta
                 title={item.title}
                 description={ item.description }
-              ></Meta>
+               />
             </Card>
             <span className="more" onClick={() => goDetail(item)}>More</span>
           </div>
@@ -56,4 +57,4 @@ function article() {
   )
 }
 
-export default article
+export default Article

@@ -1,10 +1,12 @@
+
+
 module.exports = [
   {
     path: '/',
     component: '../layouts/index',
     routes: [
-      { path: '/', component: '../pages/Article/index.js', title: '首页' },
-      { path: '/detail/:id', component: '../pages/ArticleDetail/index.js' },
+      { path: '/', component: '../pages/Article/List/index.js', title: '首页' },
+      { path: '/detail', component: '../pages/Article/Detail/index.js' },
       { path: '/time', component: '../pages/Time/index.js', title: '时间轴' },
       { path: '/admin',
         routes: [

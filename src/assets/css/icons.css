@@ -1,0 +1,19 @@
+.sprite {
+  display: inline-block;
+  vertical-align: middle;
+}
+.sprite-git-icon {
+  width: 44px;
+  height: 44px;
+  background: url('../../assets/img/git-icon.png') no-repeat;
+}
+.sprite-top {
+  width: 44px;
+  height: 44px;
+  background: url('../../assets/img/top.png') no-repeat;
+}
+.sprite-top-hover {
+  width: 44px;
+  height: 44px;
+  background: url('../../assets/img/top-hover.png') no-repeat;
+}
